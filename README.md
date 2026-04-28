@@ -100,3 +100,5 @@ source .venv/bin/activate
 - Docker Desktop with Compose v2 (`docker compose version`)
 - ~6 GB disk space for Ollama models (llama3.2 ~2 GB, mistral ~4 GB, nomic-embed-text ~274 MB)
 - Python 3.13 (Homebrew) — already present on your machine
+
+UPDATE
