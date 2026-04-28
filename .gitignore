@@ -1,0 +1,27 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data
+demo1-phoenix-rag/data/docs/*.pdf
+demo1-phoenix-rag/data/docs/*.PDF
+
+# Docker volumes (if bind-mounted locally)
+chroma_data/
+phoenix_data/
+ollama_data/
+
+# macOS
+.DS_Store

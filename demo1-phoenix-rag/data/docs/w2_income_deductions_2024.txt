@@ -1,0 +1,48 @@
+W-2 INCOME AND ABOVE-THE-LINE DEDUCTIONS — TAX YEAR 2024
+
+W-2 INCOME OVERVIEW
+
+Form W-2 reports wages, salaries, tips, and other compensation paid to employees. Key boxes on the W-2:
+- Box 1: Taxable wages (after pre-tax deductions like 401(k) and health insurance)
+- Box 2: Federal income tax withheld
+- Box 12: Various codes including 401(k) contributions (Code D), HSA contributions (Code W), group-term life insurance (Code C)
+- Box 14: Other employer-reported items (state disability insurance, union dues, employer-paid tuition)
+
+PRE-TAX vs. POST-TAX DEDUCTIONS
+
+Pre-tax deductions reduce your W-2 Box 1 wages and may also reduce Social Security/Medicare wages:
+- 401(k)/403(b) contributions: Reduce federal (and usually state) taxable income; do NOT reduce Social Security/Medicare wages
+- Health insurance premiums (Section 125 cafeteria plan): Reduce federal, Social Security, and Medicare wages
+- HSA contributions via payroll: Fully exempt from federal, Social Security, and Medicare taxes
+- Flexible Spending Accounts (FSA): Up to $3,200 for healthcare FSA; $5,000 for dependent care FSA
+
+ABOVE-THE-LINE DEDUCTIONS (ADJUSTMENTS TO INCOME)
+
+These deductions reduce your Adjusted Gross Income (AGI) and are available regardless of whether you itemize:
+
+1. Student Loan Interest Deduction: Up to $2,500 deduction for interest paid on qualified student loans. Phase-out: $75,000–$90,000 MAGI (single) / $155,000–$185,000 (married filing jointly).
+
+2. Educator Expenses: K-12 teachers and eligible educators can deduct up to $300 ($600 for married filing jointly where both are educators) of unreimbursed classroom expenses.
+
+3. Health Savings Account (HSA) Contributions: If contributing outside payroll, deduct up to $4,150 (self-only coverage) or $8,300 (family coverage). Catch-up contribution: additional $1,000 for age 55+.
+
+4. Self-Employed Health Insurance: 100% of health insurance premiums paid for yourself and family (cannot exceed net self-employment income).
+
+5. Alimony Paid: Only for divorce agreements executed before January 1, 2019. Alimony under post-2018 agreements is not deductible.
+
+6. IRA Deduction: See retirement accounts document for income-based limits.
+
+SOCIAL SECURITY AND MEDICARE TAXES
+
+Employees pay 6.2% Social Security tax on wages up to $168,600 (2024 wage base) and 1.45% Medicare tax on all wages. An additional 0.9% Medicare surtax applies to wages exceeding $200,000 (single) / $250,000 (married filing jointly) — employers do not match this additional amount.
+
+BONUS AND SUPPLEMENTAL WAGES
+
+Bonuses and commissions are "supplemental wages." Employers may withhold at a flat 22% federal rate (37% for amounts exceeding $1,000,000 in a year) or aggregate them with regular wages.
+
+IMPUTED INCOME
+
+Certain employer-provided benefits are taxable and included in Box 1:
+- Group-term life insurance exceeding $50,000 in coverage
+- Personal use of company vehicle
+- Non-cash awards exceeding de minimis thresholds

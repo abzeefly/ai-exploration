@@ -1,0 +1,62 @@
+services:
+  phoenix:
+    image: arizephoenix/phoenix:latest
+    ports:
+      - "6006:6006"
+      - "4317:4317"
+    environment:
+      - PHOENIX_WORKING_DIR=/phoenix-data
+    volumes:
+      - phoenix_data:/phoenix-data
+
+  chromadb:
+    image: chromadb/chroma:1.0.12
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/data
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 10s
+      retries: 20
+      start_period: 10s
+
+  model-puller:
+    image: curlimages/curl:latest
+    depends_on:
+      ollama:
+        condition: service_healthy
+    volumes:
+      - ./scripts:/scripts
+    entrypoint: ["/bin/sh", "/scripts/ollama_pull.sh"]
+    restart: on-failure
+
+  rag-app:
+    build: .
+    depends_on:
+      - phoenix
+      - chromadb
+      - model-puller
+    env_file: .env
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - PHOENIX_COLLECTOR_ENDPOINT=http://phoenix:6006
+      - CHROMA_HOST=chromadb
+      - CHROMA_PORT=8000
+    volumes:
+      - ./data/docs:/app/data/docs:ro
+    stdin_open: true
+    tty: true
+
+volumes:
+  phoenix_data:
+  chroma_data:
+  ollama_data:

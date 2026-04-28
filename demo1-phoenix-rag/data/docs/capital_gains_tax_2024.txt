@@ -1,0 +1,42 @@
+CAPITAL GAINS TAX — TAX YEAR 2024
+
+OVERVIEW
+
+A capital gain is the profit realized when you sell a capital asset (stocks, bonds, real estate, collectibles) for more than its adjusted basis. Capital gains are classified as short-term or long-term depending on how long you held the asset.
+
+SHORT-TERM CAPITAL GAINS
+
+Assets held for one year or less before sale are subject to short-term capital gains tax, which is taxed at ordinary income tax rates (10%, 12%, 22%, 24%, 32%, 35%, or 37% depending on your taxable income and filing status).
+
+LONG-TERM CAPITAL GAINS
+
+Assets held for more than one year are taxed at preferential long-term capital gains rates:
+
+2024 Long-Term Capital Gains Tax Rates:
+- 0%: Taxable income up to $47,025 (single) / $94,050 (married filing jointly)
+- 15%: Taxable income from $47,026 to $518,900 (single) / $94,051 to $583,750 (married filing jointly)
+- 20%: Taxable income above $518,900 (single) / $583,750 (married filing jointly)
+
+NET INVESTMENT INCOME TAX (NIIT)
+
+An additional 3.8% Medicare surtax applies to the lesser of your net investment income or the amount by which your modified AGI exceeds:
+- $200,000 for single filers
+- $250,000 for married filing jointly
+
+CAPITAL GAINS ON HOME SALES
+
+If you sell your primary residence, you may exclude up to $250,000 of gain ($500,000 for married filing jointly) if you:
+1. Owned the home for at least 2 of the last 5 years
+2. Used the home as your primary residence for at least 2 of the last 5 years
+
+QUALIFIED OPPORTUNITY ZONES
+
+Investors can defer and potentially reduce capital gains taxes by reinvesting gains into a Qualified Opportunity Fund within 180 days of the sale. Gains held for at least 10 years in a QOF may be permanently excluded.
+
+WASH SALE RULE
+
+You cannot claim a loss on the sale of a security if you buy substantially identical securities within 30 days before or after the sale. The disallowed loss is added to the basis of the replacement security.
+
+REPORTING
+
+Report capital gains and losses on Schedule D of Form 1040. Use Form 8949 to list individual transactions.

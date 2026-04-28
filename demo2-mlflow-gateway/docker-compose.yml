@@ -1,0 +1,49 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 10s
+      timeout: 10s
+      retries: 20
+
+  model-puller:
+    image: curlimages/curl:latest
+    depends_on:
+      ollama:
+        condition: service_healthy
+    volumes:
+      - ./scripts:/scripts
+    entrypoint: ["/bin/sh", "/scripts/ollama_pull.sh"]
+    restart: on-failure
+
+  mlflow-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.gateway
+    ports:
+      - "5000:5000"
+    depends_on:
+      model-puller:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+
+  demo-app:
+    build: .
+    depends_on:
+      mlflow-gateway:
+        condition: service_healthy
+    environment:
+      - MLFLOW_GATEWAY_URI=http://mlflow-gateway:5000
+      - OLLAMA_BASE_URL=http://ollama:11434
+
+volumes:
+  ollama_data:

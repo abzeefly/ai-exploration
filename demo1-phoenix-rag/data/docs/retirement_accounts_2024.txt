@@ -1,0 +1,54 @@
+RETIREMENT ACCOUNT CONTRIBUTION LIMITS AND TAX RULES — TAX YEAR 2024
+
+401(k), 403(b), AND 457(b) PLANS
+
+Employee Contribution Limit: $23,000
+Catch-Up Contribution (age 50 or older): Additional $7,500 (total $30,500)
+
+Employer contributions (matching, profit-sharing) do not count toward the employee limit but are subject to a combined limit of $69,000 (or $76,500 with catch-up).
+
+TRADITIONAL IRA
+
+Contribution Limit: $7,000 per person ($8,000 if age 50 or older)
+
+Deductibility phase-out ranges (if covered by workplace plan):
+- Single/Head of Household: $77,000 – $87,000 MAGI
+- Married Filing Jointly: $123,000 – $143,000 MAGI
+- Married Filing Separately: $0 – $10,000 MAGI
+
+If not covered by a workplace plan but spouse is covered:
+- Married Filing Jointly: $230,000 – $240,000 MAGI
+
+Contributions to Traditional IRA are tax-deferred; distributions in retirement are taxed as ordinary income. Required Minimum Distributions (RMDs) begin at age 73.
+
+ROTH IRA
+
+Contribution Limit: Same as Traditional IRA ($7,000 / $8,000 catch-up)
+
+Income phase-out ranges for contributions:
+- Single/Head of Household: $146,000 – $161,000 MAGI
+- Married Filing Jointly: $230,000 – $240,000 MAGI
+- Married Filing Separately: $0 – $10,000 MAGI
+
+Contributions are made with after-tax dollars. Qualified distributions (age 59½ and account at least 5 years old) are tax-free. No RMDs during the original owner's lifetime.
+
+BACKDOOR ROTH IRA
+
+High-income earners who exceed Roth IRA income limits may contribute to a Traditional IRA (non-deductible) and immediately convert to a Roth IRA. The pro-rata rule applies if you have pre-tax IRA balances.
+
+SELF-EMPLOYED RETIREMENT ACCOUNTS
+
+SEP-IRA: Contribute up to 25% of net self-employment income, maximum $69,000 for 2024.
+
+SIMPLE IRA: Employee contribution limit $16,000 ($19,500 with catch-up for age 50+). Employers must either match up to 3% of compensation or contribute 2% for all eligible employees.
+
+Solo 401(k): Combines employee contribution ($23,000 / $30,500 with catch-up) plus employer contribution of up to 25% of compensation, maximum combined $69,000 / $76,500.
+
+EARLY WITHDRAWAL PENALTY
+
+Distributions before age 59½ are generally subject to a 10% early withdrawal penalty in addition to ordinary income tax. Exceptions include:
+- Substantially equal periodic payments (72(t) distributions)
+- Disability
+- First-time home purchase (IRA only, up to $10,000 lifetime)
+- Higher education expenses (IRA only)
+- Unreimbursed medical expenses exceeding 7.5% of AGI

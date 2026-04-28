@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "demo2-mlflow-gateway"
+version = "0.1.0"
+description = "MLflow AI Gateway as a unified model router"
+authors = []
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.15"
+mlflow = {version = "^2.22.4", extras = ["gateway"]}
+anthropic = "^0.96.0"
+python-dotenv = "^1.1.0"
+httpx = "^0.28.1"
+
+[tool.poetry.group.dev.dependencies]
+jupyter = "^1.1.1"
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
