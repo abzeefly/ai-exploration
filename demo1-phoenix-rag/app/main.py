@@ -1,5 +1,6 @@
 import sys
 import time
+import argparse
 import urllib.request
 from app.config import CHROMA_HOST, CHROMA_PORT, PHOENIX_COLLECTOR_ENDPOINT
 from app.ingest import collection_is_empty, run_ingestion
@@ -27,6 +28,10 @@ SAMPLE_QUESTIONS = [
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Tax Policy RAG Demo")
+    parser.add_argument("--eval", action="store_true", help="Run LLM-as-judge evaluations on sample questions")
+    args = parser.parse_args()
+
     print("=== Tax Policy RAG Demo — Powered by Arize Phoenix ===\n")
     print("Waiting for services...")
     wait_for_service(f"http://{CHROMA_HOST}:{CHROMA_PORT}/api/v2/heartbeat", "ChromaDB")
@@ -41,11 +46,27 @@ def main():
         print("ChromaDB collection already populated. Skipping ingestion.\n")
 
     print("--- Running sample questions to warm up traces ---\n")
+    results = []
     for q in SAMPLE_QUESTIONS:
         print(f"Q: {q}")
         result = query_rag(q)
+        results.append(result)
         print(f"A: {result['answer'][:300]}...")
         print(f"   Sources: {result['sources']}\n")
+
+    if args.eval:
+        from app.evaluators import evaluate_batch, print_eval_summary
+        print("--- Running LLM-as-judge evaluations ---\n")
+        eval_rows = [
+            {
+                "question": q,
+                "context": "\n\n".join(r["context_chunks"]),
+                "answer": r["answer"],
+            }
+            for q, r in zip(SAMPLE_QUESTIONS, results)
+        ]
+        eval_results = evaluate_batch(eval_rows)
+        print_eval_summary(SAMPLE_QUESTIONS, eval_results)
 
     print("\n--- Interactive Mode (type 'exit' to quit) ---\n")
     while True:
