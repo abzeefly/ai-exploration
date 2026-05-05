@@ -135,3 +135,9 @@ jupyter notebook notebooks/
 | `PHOENIX_BASE_URL` | `http://localhost:6006` | Phoenix REST API base URL |
 | `CHROMA_HOST` | `localhost` | ChromaDB host |
 | `CHROMA_PORT` | `8000` | ChromaDB port |
+
+
+## Link to demo
+
+[Demo Video](https://youtu.be/2nFrtCEgKL0)
+
