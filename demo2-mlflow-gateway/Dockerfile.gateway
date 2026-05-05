@@ -2,13 +2,6 @@ FROM python:3.11-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
 
-# Use mlflow 2.22.x — the last stable release with full self-hosted gateway support.
-# mlflow 3.x deprecated `gateway start` in favour of Databricks-hosted UI.
-RUN pip install --no-cache-dir "mlflow[gateway]==2.22.1"
+RUN pip install --no-cache-dir "mlflow[genai]==3.9.0"
 
-COPY gateway/config.yaml /app/config.yaml
-
-CMD ["mlflow", "gateway", "start", \
-     "--config-path", "/app/config.yaml", \
-     "--host", "0.0.0.0", \
-     "--port", "5000"]
+CMD ["mlflow", "server", "--host", "0.0.0.0", "--port", "5000"]

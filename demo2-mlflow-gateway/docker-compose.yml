@@ -5,8 +5,10 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_MAX_LOADED_MODELS=1
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      test: ["CMD", "ollama", "list"]
       interval: 10s
       timeout: 10s
       retries: 20
@@ -25,8 +27,20 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.gateway
+    command:
+      - mlflow
+      - gateway
+      - start
+      - --config-path
+      - /app/config.yaml
+      - --host
+      - "0.0.0.0"
+      - --port
+      - "5000"
     ports:
-      - "5000:5000"
+      - "5050:5000"
+    volumes:
+      - ./gateway/config.yaml:/app/config.yaml:ro
     depends_on:
       model-puller:
         condition: service_completed_successfully
@@ -36,14 +50,66 @@ services:
       timeout: 5s
       retries: 15
 
-  demo-app:
-    build: .
+  mlflow-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.gateway
+    command:
+      - mlflow
+      - server
+      - --host
+      - "0.0.0.0"
+      - --port
+      - "5001"
+      - --backend-store-uri
+      - sqlite:////mlruns/mlflow.db
+      - --default-artifact-root
+      - /mlruns
+    ports:
+      - "5001:5001"
+    volumes:
+      - mlflow_runs:/mlruns
+    environment:
+      - MLFLOW_DEPLOYMENTS_TARGET=http://mlflow-gateway:5000
     depends_on:
       mlflow-gateway:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+
+  gateway-seeder:
+    build:
+      context: .
+      dockerfile: Dockerfile.gateway
+    command:
+      - python3
+      - /scripts/seed_gateway.py
+      - /app/config.yaml
+    volumes:
+      - ./scripts/seed_gateway.py:/scripts/seed_gateway.py:ro
+      - ./gateway/config.yaml:/app/config.yaml:ro
+    depends_on:
+      mlflow-server:
+        condition: service_healthy
+    restart: on-failure
+
+  demo-app:
+    build: .
+    volumes:
+      - ./app:/app/app:ro
+    depends_on:
+      mlflow-gateway:
+        condition: service_healthy
+      mlflow-server:
         condition: service_healthy
     environment:
       - MLFLOW_GATEWAY_URI=http://mlflow-gateway:5000
       - OLLAMA_BASE_URL=http://ollama:11434
+      - MLFLOW_TRACKING_URI=http://mlflow-server:5001
 
 volumes:
   ollama_data:
+  mlflow_runs:

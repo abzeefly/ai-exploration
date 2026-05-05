@@ -15,7 +15,7 @@ import mlflow
 from mlflow.deployments import get_deploy_client
 from mlflow.metrics.genai import faithfulness, answer_relevance, relevance
 
-from app.config import MLFLOW_GATEWAY_URI, OLLAMA_BASE_URL
+from app.config import MLFLOW_GATEWAY_URI, OLLAMA_BASE_URL, MLFLOW_TRACKING_URI
 
 EVAL_DATA = [
     {
@@ -68,14 +68,16 @@ def generate_answers(gateway_client, route: str, rows: list[dict]) -> pd.DataFra
 
 
 def run_mlflow_eval(df: pd.DataFrame, run_name: str, route: str, judge_base_url: str) -> dict:
-    # Ollama's OpenAI-compatible endpoint — no real key needed
     ollama_v1 = f"{judge_base_url}/v1"
 
     with mlflow.start_run(run_name=run_name) as run:
         mlflow.log_param("gateway_route", route)
         mlflow.log_param("judge_model", "mistral")
         mlflow.log_param("judge_endpoint", ollama_v1)
+        mlflow.log_param("num_questions", len(df))
         mlflow.log_metric("mean_latency_s", df["latency_s"].mean())
+        mlflow.log_metric("max_latency_s", df["latency_s"].max())
+        mlflow.log_metric("min_latency_s", df["latency_s"].min())
 
         eval_result = mlflow.evaluate(
             data=df[["question", "context", "answer", "ground_truth"]],
@@ -101,8 +103,10 @@ def section(title: str):
 
 
 def main():
-    mlflow.set_tracking_uri("mlruns")
+    mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
     mlflow.set_experiment("tax-rag-evaluation")
+
+    print(f"MLflow Tracking URI: {MLFLOW_TRACKING_URI}")
 
     gw = get_deploy_client(MLFLOW_GATEWAY_URI)
 
@@ -125,7 +129,8 @@ def main():
         label = key.split("/")[0]
         print(f"  {label:25s}  llama3.2={l:.2f}  mistral={m:.2f}  diff={m-l:+.2f}")
 
-    print(f"\nView in MLflow UI:  mlflow ui --port 5001  →  http://localhost:5001")
+    print(f"\nView results in MLflow UI  →  {MLFLOW_TRACKING_URI}")
+    print(f"  Experiment: tax-rag-evaluation → compare 'llama3.2-rag-eval' vs 'mistral-rag-eval'")
 
 
 if __name__ == "__main__":

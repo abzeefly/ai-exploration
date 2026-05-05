@@ -1,31 +1,37 @@
-# MLflow AI Gateway route configuration (mlflow 2.x format)
+# MLflow AI Gateway endpoint configuration (mlflow 3.x)
 #
-# Routes:
-#   llama-chat        — Llama 3.2 (3B, fast) via Ollama
-#   mistral-chat      — Mistral 7B (higher quality) via Ollama
-#   ollama-embeddings — nomic-embed-text via Ollama
+# Ollama exposes a fully OpenAI-compatible API at /v1.
+# We use the 'openai' provider with openai_api_base pointing at Ollama.
+#
+# Endpoints:
+#   llama-chat        — Llama 3.2 (3B, fast) via Ollama /v1
+#   mistral-chat      — Mistral 7B (quality) via Ollama /v1
+#   ollama-embeddings — nomic-embed-text via Ollama /v1
 
-routes:
+endpoints:
   - name: llama-chat
-    route_type: llm/v1/chat
+    endpoint_type: llm/v1/chat
     model:
-      provider: ollama
+      provider: openai
       name: llama3.2
       config:
-        ollama_base_url: http://ollama:11434
+        openai_api_key: ollama
+        openai_api_base: http://ollama:11434/v1
 
   - name: mistral-chat
-    route_type: llm/v1/chat
+    endpoint_type: llm/v1/chat
     model:
-      provider: ollama
+      provider: openai
       name: mistral
       config:
-        ollama_base_url: http://ollama:11434
+        openai_api_key: ollama
+        openai_api_base: http://ollama:11434/v1
 
   - name: ollama-embeddings
-    route_type: llm/v1/embeddings
+    endpoint_type: llm/v1/embeddings
     model:
-      provider: ollama
+      provider: openai
       name: nomic-embed-text
       config:
-        ollama_base_url: http://ollama:11434
+        openai_api_key: ollama
+        openai_api_base: http://ollama:11434/v1
